@@ -66,7 +66,7 @@ const fields = {
   Name: { value: '7 Mindset STRATEGIES to raise your game' },
   Image: {
     value: {
-      src: '/assets/img/shop/man-biker.jpg',
+      src: '/assets/img/man-biker.jpg',
     },
   },
   Rooms: rooms,

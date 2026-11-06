@@ -2,7 +2,7 @@ import { PropsWithChildren, FC, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSlidersH } from '@fortawesome/free-solid-svg-icons';
 
-import Spinner from '../ShopCommon/Spinner';
+import Spinner from '../NonSitecore/Spinner';
 import SearchFacets, { SearchFacetsProps } from './SearchFacets';
 import Pagination, { SearchPaginationProps } from './SearchPagination';
 

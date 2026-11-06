@@ -18,11 +18,6 @@ import {
 } from './BoxeverService';
 import { TICKETS } from '../models/mock-tickets';
 import { SessionPageFields } from '../types/session';
-import { DLineItem } from '../models/ordercloud/DLineItem';
-import { AddToCartPayload } from '../models/cdp/AddToCartPayload';
-import { OrderCheckoutPayload, OrderItem } from '../models/cdp/OrderCheckoutPayload';
-import { DOrder } from '../models/ordercloud/DOrder';
-import { DPayment } from '../models/ordercloud/DPayment';
 import { CDP_CUSTOM_EVENTS } from 'src/constants/cdp-custom-events';
 
 export const isCdpConfigured = boxeverIsCdpConfigured;
@@ -127,65 +122,6 @@ export async function logAttendeeFormCompleted(): Promise<unknown> {
  */
 export function logTicketSelected(): Promise<unknown> {
   return logEvent(CDP_CUSTOM_EVENTS.ticketSelected.type);
-}
-
-/**
- * Logs an ADD (add to cart) event
- */
-export function logAddToCart(lineItem: DLineItem, quantity: number): Promise<unknown> {
-  const addToCartPayload: AddToCartPayload = {
-    product: {
-      type: lineItem.Product.xp.ProductType.toUpperCase(),
-      item_id: lineItem.Variant?.ID || lineItem.ProductID,
-      name: lineItem.Product.Name,
-      orderedAt: new Date().toISOString(),
-      quantity: quantity,
-      price: lineItem.UnitPrice,
-      productId: lineItem.ProductID,
-      currency: 'USD',
-      referenceId: lineItem.ID,
-    },
-  };
-
-  return logEvent('ADD', addToCartPayload);
-}
-
-/**
- * Logs an ORDER_CHECKOUT event
- */
-export function logOrderCheckout(
-  order: DOrder,
-  lineItems: DLineItem[],
-  payments: DPayment[]
-): Promise<unknown> {
-  const orderItems: OrderItem[] = [];
-  lineItems.forEach((lineItem) => {
-    orderItems.push({
-      type: lineItem.Product.Name,
-      referenceId: lineItem.ID,
-      orderedAt: new Date(lineItem.DateAdded).toISOString(),
-      status: 'PURCHASED',
-      currencyCode: 'USD',
-      price: lineItem.UnitPrice,
-      name: lineItem.Product.Name,
-      productId: lineItem.ProductID,
-      quantity: lineItem.Quantity,
-    });
-  });
-
-  const orderCheckoutPayload: OrderCheckoutPayload = {
-    order: {
-      orderItems,
-      referenceId: order.ID,
-      orderedAt: new Date(order.DateSubmitted || order.LastUpdated).toISOString(),
-      status: 'PURCHASED',
-      currencyCode: 'USD',
-      price: order.Total,
-      paymentType: 'Card',
-      cardType: payments[0].xp?.CreditCard?.CardType,
-    },
-  };
-  return logEvent('ORDER_CHECKOUT', orderCheckoutPayload);
 }
 
 export function getDynamicWelcomeMessage(

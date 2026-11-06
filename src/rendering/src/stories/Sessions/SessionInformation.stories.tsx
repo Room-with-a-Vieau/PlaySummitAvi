@@ -169,7 +169,7 @@ export const Default = {
       },
       Image: {
         value: {
-          src: '/assets/img/shop/man-biker.jpg',
+          src: '/assets/img/man-biker.jpg',
         },
       },
       Speakers: [speaker1, speaker2],

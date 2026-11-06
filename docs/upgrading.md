@@ -88,38 +88,31 @@ This solution has some major changes compared to the xmcloud-foundation-head rep
        2. PostCSS
        3. Stylelint
        4. Fortawesome instead of font-awesome
-       5. auth0
-       6. @next/bundle-analyzer
-       7. OrderCloud
-       8. Sitecore Discover
-       9. Redux
-       10. Storybook
-       11. And many others...
+       5. @next/bundle-analyzer
+       6. Storybook
+       7. And many others...
     4. We have extra folders and files:
        1. `\.storybook`
-       2. `\discover-feeds`
-       3. `\search-crawlers`
-       4. `\sitecore`
-       5. `.editorconfig`
-       6. `.npmrc`
-       7. `postcss.config.js`
-       8. `robots.txt` to disallow public search engine indexing.
-       9. `scjssconfig.json`
-       10. `stylelint.config.ts`
-       11. `tailwind.config.js`
-       12. `vercel.json`
-       13. `\public\assets`
-       14. `\public\robots.txt` to disallow public search engine indexing.
-       15. Many subfolders in `\src\pages`
-       16. `\src\pages\_document.tsx`
-       17. Many subfolders in `\src\pages\api`
-       18. Many subfolders in `\src`
+       2. `\search-crawlers`
+       3. `\sitecore`
+       4. `.editorconfig`
+       5. `.npmrc`
+       6. `postcss.config.js`
+       7. `robots.txt` to disallow public search engine indexing.
+       8. `scjssconfig.json`
+       9. `stylelint.config.ts`
+       10. `tailwind.config.js`
+       11. `vercel.json`
+       12. `\public\assets`
+       13. `\public\robots.txt` to disallow public search engine indexing.
+       14. Many subfolders in `\src\pages`
+       15. `\src\pages\_document.tsx`
+       16. Many subfolders in `\src\pages\api`
+       17. Many subfolders in `\src`
     5. Custom `rootPlaceholders` in `package.json`.
-    6. `.prettierignore` contains an extra entries:
-       1. `src/temp/categoriesData.ts`
-    7. `tsconfig.json` contains changes:
+    6. `tsconfig.json` contains changes:
        1. Extra `"strictNullChecks": false,` compiler option.
-    8. Moved the `\src\components` files into the `\src\components\nextjs-sxa` folder.
+    7. Moved the `\src\components` files into the `\src\components\nextjs-sxa` folder.
 
 ### Sync
 

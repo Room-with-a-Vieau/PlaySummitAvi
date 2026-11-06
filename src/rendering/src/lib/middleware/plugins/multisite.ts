@@ -27,8 +27,6 @@ class MultisitePlugin implements MiddlewarePlugin {
       excludeRoute: (pathname: string) => {
         if (
           pathname.startsWith('/search') ||
-          pathname.startsWith('/shop') ||
-          pathname.startsWith('/account') ||
           pathname.startsWith('/channels') ||
           pathname.startsWith('/careconnect')
         ) {

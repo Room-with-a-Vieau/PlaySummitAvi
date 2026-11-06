@@ -9,7 +9,7 @@ import {
 } from '@sitecore-search/react';
 
 import PreviewSearchContainer from './PreviewSearchContainer';
-import ClickOutside from '../ShopCommon/ClickOutside';
+import useClickOutside from '../../hooks/useClickOutside';
 import PreviewSearchInput from './PreviewSearchInput';
 import PreviewSearchIcon from './PreviewSearchIcon';
 import { SEARCH_PAGE } from '../../helpers/ContentSearchHelper';
@@ -125,7 +125,7 @@ const PreviewSearchContent = ({
     previewSearchInput.value = '';
   }, [onKeyphraseChange]);
 
-  ClickOutside([containerRef], onClose);
+  useClickOutside([containerRef], onClose);
 
   // Hide preview search when on search page
   if (router?.pathname === SEARCH_PAGE) {

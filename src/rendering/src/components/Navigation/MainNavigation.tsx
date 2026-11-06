@@ -2,7 +2,6 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 import { ImageField, Image } from '@sitecore-jss/sitecore-jss-nextjs';
 import { ComponentProps } from 'lib/component-props';
-import { isCommerceEnabled } from '../../helpers/CommerceHelper';
 import { useI18n } from 'next-localization';
 import PreviewSearchWidget from '../PreviewSearchContent/PreviewSearchContent';
 import { isSearchSDKEnabled } from '../../services/SearchSDKService';
@@ -47,12 +46,6 @@ const MainNavigation = (props: MainNavigationProps): JSX.Element => {
 
   const sxaStyles = `${props.params?.styles || ''}`;
 
-  const shopLink = isCommerceEnabled && (
-    <li className="text-menu-item">
-      <Link href="/shop">Shop</Link>
-    </li>
-  );
-
   return (
     <nav className={`main-navigation ${sxaStyles}`}>
       <div className="navigation-content">
@@ -87,7 +80,6 @@ const MainNavigation = (props: MainNavigationProps): JSX.Element => {
                 </Link>
               </li>
             ))}
-            {shopLink}
             <li className="button-menu-item">
               <Link href="/tickets" className="btn-main">
                 {t('Book Tickets') || 'Book Tickets'}

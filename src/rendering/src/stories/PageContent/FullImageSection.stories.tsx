@@ -15,8 +15,8 @@ export const Left = {
     fields: {
       callToActionLink: {
         value: {
-          href: '/shop/product',
-          text: 'Get Discount Code',
+          href: '/vendors',
+          text: 'View Vendors',
         },
       },
       content: {

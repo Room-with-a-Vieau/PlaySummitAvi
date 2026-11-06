@@ -11,7 +11,7 @@ Languages:
     - ID: "0f531c03-8501-5776-be06-03ac387d1076"
       Hint: callToActionLink
       Value: |
-        <link text="Get Discount Code" linktype="external" url="/shop" anchor="" target="" />
+        <link text="View Vendors" linktype="external" url="/vendors" anchor="" target="" />
     - ID: "52db75bc-b548-42bf-8fff-7ed04af8cb58"
       Hint: backgroundImage
       Value: |
@@ -32,7 +32,7 @@ Languages:
     - ID: "0f531c03-8501-5776-be06-03ac387d1076"
       Hint: callToActionLink
       Value: |
-        <link text="Obtenez le code de réduction" linktype="external" url="/shop" anchor="" target="" />
+        <link text="Voir les exposants" linktype="external" url="/vendors" anchor="" target="" />
     - ID: "52db75bc-b548-42bf-8fff-7ed04af8cb58"
       Hint: backgroundImage
       Value: |

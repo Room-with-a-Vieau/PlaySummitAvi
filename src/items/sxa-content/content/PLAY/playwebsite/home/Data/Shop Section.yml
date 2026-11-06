@@ -39,8 +39,7 @@ Languages:
         
     - ID: "3df1996f-e6b3-52c9-82c7-c8ba54147c1f"
       Hint: callToActionLink
-      Value: |
-        <link text="Découvrir plus" linktype="external" url="/shop" anchor="" target="" />
+      Value: 
     - ID: "3e431de1-525e-47a3-b6b0-1ccbec3a8c98"
       Hint: __Workflow state
       Value: "{F103752C-F458-47E0-B322-99785275BDB9}"

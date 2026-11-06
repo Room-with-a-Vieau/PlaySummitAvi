@@ -1,7 +1,10 @@
 import { useEffect } from 'react';
-import { DiscoverReference } from '../../services/DiscoverService';
 
-const ClickOutside = (references: DiscoverReference[], handler: () => void): void => {
+export interface ClickOutsideReference {
+  current: { contains: (eventTarget: EventTarget) => boolean };
+}
+
+const useClickOutside = (references: ClickOutsideReference[], handler: () => void): void => {
   useEffect(() => {
     const listener = (event: Event) => {
       let clickWasOnAReference = false;
@@ -36,4 +39,4 @@ const ClickOutside = (references: DiscoverReference[], handler: () => void): voi
   }, [references, handler]);
 };
 
-export default ClickOutside;
+export default useClickOutside;

@@ -353,23 +353,6 @@ export const mockFooterProps = {
                       },
                     },
                   },
-                  {
-                    displayName: 'Shop',
-                    icon: { value: '' },
-                    title: { value: '' },
-                    field: {
-                      jsonValue: {
-                        value: {
-                          href: '/shop',
-                          text: 'shop',
-                          linktype: 'external',
-                          url: '/shop',
-                          anchor: '',
-                          target: '',
-                        },
-                      },
-                    },
-                  },
                 ],
               },
             },
