@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/nextjs';
 import { SESSIONS } from '../mock-sessions';
 
 import { Default as SponsorInformation } from '../../components/Sponsors/SponsorInformation';

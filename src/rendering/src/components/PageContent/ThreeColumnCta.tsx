@@ -1,4 +1,6 @@
-import { Text, Field, withDatasourceCheck } from '@sitecore-jss/sitecore-jss-nextjs';
+'use client';
+import type { JSX } from 'react';
+import { Text, Field, withDatasourceCheck } from '@sitecore-content-sdk/nextjs';
 import { ComponentProps } from 'lib/component-props';
 
 type ThreeColumnCtaProps = ComponentProps & {

@@ -1,5 +1,7 @@
+'use client';
+import type { JSX } from 'react';
 import { ComponentProps } from 'lib/component-props';
-import { LinkField, Link, withDatasourceCheck } from '@sitecore-jss/sitecore-jss-nextjs';
+import { LinkField, Link, withDatasourceCheck } from '@sitecore-content-sdk/nextjs';
 
 export type HeroSectionCtaProps = ComponentProps & {
   fields: {

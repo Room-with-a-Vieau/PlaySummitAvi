@@ -1,10 +1,12 @@
+'use client';
+import type { JSX } from 'react';
 import {
   Text,
   RichText,
   Field,
   Image,
   withDatasourceCheck,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import { ComponentProps } from 'lib/component-props';
 import { Testimony } from 'src/types/testimony';
 

@@ -1,5 +1,4 @@
-import { identifyVisitor as identifyVisitorInCdpCloudSDK } from './CloudSDKService';
-import { identifyVisitor as identifyVisitorInCdp } from './CdpService';
+import { identifyVisitor as identifyVisitorInEvents } from './EventsService';
 import { identifyVisitor as identifyVisitorInSend } from './SendService';
 
 export async function identifyVisitor(
@@ -10,12 +9,11 @@ export async function identifyVisitor(
 ): Promise<unknown> {
   identifyVisitorInSend(email, firstName, lastName);
 
-  // Log the 'IDENTITY' event to CDP using the Cloud SDK
+  // Log the 'IDENTITY' event
   try {
-    await identifyVisitorInCdpCloudSDK(email, firstName, lastName, phoneNumber);
+    return await identifyVisitorInEvents(email, firstName, lastName, phoneNumber);
   } catch (e) {
     console.error(e);
+    return undefined;
   }
-
-  return identifyVisitorInCdp(email, firstName, lastName, phoneNumber);
 }

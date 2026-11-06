@@ -1,17 +1,19 @@
+'use client';
+import type { JSX } from 'react';
 import { faCheck, faChevronDown, faSlidersH, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import type { useSearchResultsSelectedFilters } from '@sitecore-search/react';
 import { AccordionFacets, SearchResultsAccordionFacets, FacetItem } from '@sitecore-search/ui';
 import {
   FacetChangedPayload,
   SearchResponseFacet,
   SearchResponseFacetItem,
 } from '@sitecore-search/react';
-import { SearchResultsSelectedFilters } from '@sitecore-search/react/dist/types/widgets/searchResults/hooks/useSearchResultsSelectedFilters';
 
 export type SearchFacetsProps = {
   facets: SearchResponseFacet[];
   onFacetValueClick: (payload: FacetChangedPayload) => void;
-  selectedFacets?: SearchResultsSelectedFilters;
+  selectedFacets?: ReturnType<typeof useSearchResultsSelectedFilters>;
   onRemoveFilter?: (facet: unknown) => void;
   onClearFilters?: () => void;
   className?: string;

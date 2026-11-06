@@ -1,3 +1,4 @@
+'use client';
 import * as FEAAS from '@sitecore-feaas/clientside/react';
 import Timer from '../NonSitecore/Timer';
 

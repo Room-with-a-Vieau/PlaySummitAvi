@@ -1,3 +1,4 @@
+'use client';
 import type { SearchResultsInitialState, SearchResultsWidgetQuery } from '@sitecore-search/react';
 import { WidgetDataType, useSearchResults, widget } from '@sitecore-search/react';
 import Link from 'next/link';

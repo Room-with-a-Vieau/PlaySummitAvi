@@ -1,8 +1,6 @@
-import React from 'react';
-import { StoryFn, Meta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/nextjs';
 
 import HeaderContent from '../../components/Navigation/HeaderContent';
-import HeaderCdpMessageBar from '../../components/HeaderCdpMessageBar';
 import {
   Default as SpeakerInformationPageHero,
   SpeakerInformationPageHeroProps,
@@ -91,7 +89,6 @@ const Template: StoryFn<typeof SpeakerInformationPageHero> = () => {
         <HeaderContent {...mockHeaderProps} />
       </header>
       <main>
-        <HeaderCdpMessageBar />
         <SpeakerInformationPageHero {...speakerInformationPageHeroProps} />
         <SpeakerInformation {...speakerInformationProps}>
           <SessionList {...sessionListProps} />

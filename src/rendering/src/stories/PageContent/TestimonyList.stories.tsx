@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/nextjs';
 
 import { Default as TestimonyList } from '../../components/PageContent/TestimonyList';
 import { Testimony } from 'src/types/testimony';

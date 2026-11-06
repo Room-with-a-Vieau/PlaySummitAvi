@@ -1,3 +1,5 @@
+'use client';
+import type { JSX } from 'react';
 import { ComponentProps } from 'lib/component-props';
 import {
   Text,
@@ -7,7 +9,7 @@ import {
   ImageField,
   Image,
   withDatasourceCheck,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 
 export type ThreeColumnsSectionProps = ComponentProps & {
   fields: {

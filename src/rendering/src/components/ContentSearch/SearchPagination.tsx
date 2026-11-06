@@ -1,3 +1,5 @@
+'use client';
+import type { JSX } from 'react';
 import { ArrowLeftIcon, ArrowRightIcon } from '@radix-ui/react-icons';
 import { MouseEventHandler } from 'react';
 import { Pagination } from '@sitecore-search/ui';

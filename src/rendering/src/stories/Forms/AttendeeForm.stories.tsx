@@ -1,5 +1,4 @@
-import React from 'react';
-import { StoryFn, Meta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/nextjs';
 
 import { Default as AttendeeForm } from '../../components/Forms/AttendeeForm';
 

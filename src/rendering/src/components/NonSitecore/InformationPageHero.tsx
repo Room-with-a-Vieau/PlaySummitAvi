@@ -1,4 +1,6 @@
-import { Field, Image, ImageField, Text } from '@sitecore-jss/sitecore-jss-nextjs';
+'use client';
+import type { JSX } from 'react';
+import { Field, Image, ImageField, Text } from '@sitecore-content-sdk/nextjs';
 import { ComponentProps } from 'lib/component-props';
 import {
   faFacebookF,

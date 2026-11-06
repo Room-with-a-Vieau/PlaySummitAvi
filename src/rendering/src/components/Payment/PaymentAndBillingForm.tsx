@@ -1,13 +1,13 @@
+'use client';
+import type { JSX } from 'react';
 import { FormEvent } from 'react';
-import Router from 'next/router';
+import { useRouter } from 'next/navigation';
 
 import { getPublicAssetUrl } from '../../../src/helpers/PublicUrlHelper';
-import { logTicketPurchase as logTicketPurchaseCloudSDK } from '../../services/CloudSDKService';
-import { logTicketPurchase } from '../../services/CdpService';
-import useTicketOfferId from 'src/hooks/useTicketOffer';
+import { logTicketPurchase } from '../../services/EventsService';
 
 const PaymentAndBillingForm = (): JSX.Element => {
-  const ticketOfferId = useTicketOfferId();
+  const router = useRouter();
   const publicUrl = getPublicAssetUrl();
 
   const handleFormSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -25,19 +25,14 @@ const PaymentAndBillingForm = (): JSX.Element => {
       return;
     }
 
-    // Log the 'TICKET_PURCHASED' custom event to CDP using the Cloud SDK
+    // Log the 'TICKET_PURCHASED' custom event
     try {
-      await logTicketPurchaseCloudSDK(parseInt(ticketId));
+      await logTicketPurchase(parseInt(ticketId));
     } catch (e) {
       console.error(e);
     }
 
-    return await logTicketPurchase(parseInt(ticketId), parseInt(ticketId) === ticketOfferId)
-      .then(() => Router.push(`/tickets/payment/confirmed?ticket=${ticketId}`))
-      .catch((e) => {
-        console.log(e);
-        alert('An error occured while processing the purchase.');
-      });
+    router.push(`/tickets/payment/confirmed?ticket=${ticketId}`);
   };
 
   return (

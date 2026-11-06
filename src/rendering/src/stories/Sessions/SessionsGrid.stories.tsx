@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/nextjs';
 
 import { Default as SessionsGrid } from '../../components/Sessions/SessionsGrid';
 import { SESSIONS } from '../mock-sessions';

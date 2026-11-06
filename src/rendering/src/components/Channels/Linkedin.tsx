@@ -1,3 +1,5 @@
+'use client';
+import type { JSX } from 'react';
 import { getPublicAssetUrl } from 'src/helpers/PublicUrlHelper';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { PLAY_SUMMIT_POSTS, USER } from './constants';

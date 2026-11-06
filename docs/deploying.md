@@ -9,7 +9,7 @@ These steps are for deploying the PLAY! Summit demo to XM Cloud. At the end, you
 You will not get:
 
 - A delivery rendering host for visitors to browse your website on the web
-- Sitecore Search, Sitecore CDP/Personalize, Content Hub DAM and CMP integrations.
+- Sitecore Search, Content Hub DAM and CMP integrations.
 
 To get these extra things, you must deploy the front-end project somewhere on the web (eg.: Vercel) with the right environment variables. This is not covered in this documentation, but you can use Sitecore Demo Portal to deploy it automatically (see 'Deploy the PLAY! Summit Demo front-end app(s) using Sitecore Demo Portal' section at the bottom of this document).
 

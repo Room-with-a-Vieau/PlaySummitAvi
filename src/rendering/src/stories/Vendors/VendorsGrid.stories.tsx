@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/nextjs';
 
 import { Default as VendorsGrid } from '../../components/Vendors/VendorsGrid';
 import { Vendor } from 'src/types/vendor';

@@ -1,3 +1,5 @@
+'use client';
+import type { JSX } from 'react';
 import { SearchResponseSuggestion } from '@sitecore-search/react';
 
 import SuggestionList, { Suggestion } from './SuggestionList';

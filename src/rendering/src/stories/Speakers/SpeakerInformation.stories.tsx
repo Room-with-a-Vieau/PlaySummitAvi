@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/nextjs';
 
 import { Default as SpeakerInformation } from '../../components/Speakers/SpeakerInformation';
 import { SESSIONS } from '../mock-sessions';

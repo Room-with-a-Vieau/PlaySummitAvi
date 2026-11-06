@@ -1,4 +1,5 @@
-import React from 'react';
+'use client';
+import type { JSX } from 'react';
 // DEMO TEAM CUSTOMIZATION - Removed Field and Text. Added RichTextField.
 import {
   NextImage as JssImage,
@@ -7,7 +8,7 @@ import {
   ImageField,
   LinkField,
   RichTextField,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 // END CUSTOMIZATION
 
 interface Fields {

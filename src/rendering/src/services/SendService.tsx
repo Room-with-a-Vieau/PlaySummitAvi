@@ -1,4 +1,5 @@
-import { LayoutServicePageState } from '@sitecore-jss/sitecore-jss-nextjs';
+import type { JSX } from 'react';
+import { LayoutServicePageState } from '@sitecore-content-sdk/nextjs';
 import Script from 'next/script';
 import { isEditingOrPreviewingPage } from '../helpers/LayoutServiceHelper';
 

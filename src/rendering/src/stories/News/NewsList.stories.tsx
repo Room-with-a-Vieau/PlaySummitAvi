@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/nextjs';
 
 import { Default as NewsList } from '../../components/News/NewsList';
 import { News } from 'src/types/news';

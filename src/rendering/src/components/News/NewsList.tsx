@@ -1,3 +1,5 @@
+'use client';
+import type { JSX } from 'react';
 import Link from 'next/link';
 import {
   Text,
@@ -5,8 +7,8 @@ import {
   RichText,
   DateField,
   LayoutServicePageState,
-  useSitecoreContext,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+  useSitecore,
+} from '@sitecore-content-sdk/nextjs';
 import { ComponentProps } from 'lib/component-props';
 import { News } from 'src/types/news';
 import { newsDateFormatter } from '../../helpers/DateHelper';
@@ -18,7 +20,8 @@ type NewsListProps = ComponentProps & {
 };
 
 const NewsList = (props: NewsListProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
+  const { page } = useSitecore();
+  const sitecoreContext = page.layout.sitecore.context;
 
   const isPageEditing = sitecoreContext.pageState === LayoutServicePageState.Edit;
   const hasNews = !!props?.fields?.items?.length;

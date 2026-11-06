@@ -1,5 +1,7 @@
+'use client';
+import type { JSX } from 'react';
 import { ComponentProps } from 'lib/component-props';
-import { useI18n } from 'next-localization';
+import { useI18n } from 'src/hooks/useI18n';
 
 const SessionsFilters = (props: ComponentProps): JSX.Element => {
   const sxaStyles = `${props.params?.styles || ''}`;

@@ -1,7 +1,8 @@
-import { FormEvent, useEffect, useState } from 'react';
+'use client';
+import type { JSX } from 'react';
+import { FormEvent, useState } from 'react';
 import Link from 'next/link';
 import { identifyVisitor } from '../../services/IdentificationService';
-import { getUserData } from '../../helpers/GuestDataHelper';
 import { ComponentProps } from 'lib/component-props';
 
 const SponsorizeForm = (props: ComponentProps): JSX.Element => {
@@ -12,18 +13,6 @@ const SponsorizeForm = (props: ComponentProps): JSX.Element => {
   const [phoneNumber, setPhoneNumber] = useState('');
 
   const sxaStyles = `${props.params?.styles || ''}`;
-
-  useEffect(() => {
-    const setUserData = async () => {
-      const userData = await getUserData();
-
-      setFirstName(userData.firstName);
-      setLastName(userData.lastName);
-      setEmail(userData.email);
-    };
-
-    setUserData();
-  }, []);
 
   const handleFormSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();

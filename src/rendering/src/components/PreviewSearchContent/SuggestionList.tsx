@@ -1,3 +1,5 @@
+'use client';
+import type { JSX } from 'react';
 import { SEARCH_PAGE } from '../../helpers/ContentSearchHelper';
 
 export type Suggestion = {

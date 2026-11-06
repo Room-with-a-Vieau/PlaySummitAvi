@@ -1,21 +1,11 @@
-import React, { PropsWithChildren, useEffect } from 'react';
-import Head from 'next/head';
-import { logViewEvent } from '../../services/BoxeverService';
+'use client';
+import type { JSX } from 'react';
+import { PropsWithChildren } from 'react';
 import { Default as Footer, FooterProps } from '../Navigation/Footer';
 import HeaderContent, { HeaderContentProps } from '../Navigation/HeaderContent';
-import HeaderCdpMessageBar from '../HeaderCdpMessageBar';
 import { Default as MainNavigation, MainNavigationProps } from '../Navigation/MainNavigation';
 
 const SummitLayout = (props: PropsWithChildren): JSX.Element => {
-  useEffect(() => {
-    // Log a CDP page view on route change
-    const pushState = history.pushState;
-    history.pushState = (...rest) => {
-      pushState.apply(history, rest);
-      logViewEvent();
-    };
-  }, []);
-
   const headerContentProps = {
     fields: {
       data: {
@@ -650,15 +640,14 @@ const SummitLayout = (props: PropsWithChildren): JSX.Element => {
 
   return (
     <>
-      <Head>
+      <>
         <link rel="icon" href="/favicon.ico" />
-      </Head>
+      </>
       <header>
         <HeaderContent {...headerContentProps} />
         <MainNavigation {...mainNavigationProps} />
       </header>
       <main>
-        <HeaderCdpMessageBar />
         <div className="component w-full">
           <div className="component-content">
             <div className="row">{props.children}</div>

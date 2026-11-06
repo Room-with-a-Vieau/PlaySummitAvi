@@ -1,11 +1,12 @@
+'use client';
+import type { JSX } from 'react';
 import {
   Link,
   LinkField,
   Text,
   TextField,
-  useSitecoreContext,
-} from '@sitecore-jss/sitecore-jss-nextjs';
-import React from 'react';
+  useSitecore,
+} from '@sitecore-content-sdk/nextjs';
 
 interface Fields {
   data: {
@@ -62,7 +63,8 @@ const ComponentContent = (props: ComponentContentProps) => {
 
 export const Default = (props: TitleProps): JSX.Element => {
   const datasource = props.fields?.data?.datasource || props.fields?.data?.contextItem;
-  const { sitecoreContext } = useSitecoreContext();
+  const { page } = useSitecore();
+  const sitecoreContext = page.layout.sitecore.context;
   const text: TextField = datasource?.field?.jsonValue || {};
   const link: LinkField = {
     value: {

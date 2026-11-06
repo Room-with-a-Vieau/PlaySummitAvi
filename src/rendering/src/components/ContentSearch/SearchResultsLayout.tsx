@@ -1,4 +1,6 @@
-import React, { PropsWithChildren } from 'react';
+'use client';
+import type { JSX } from 'react';
+import { PropsWithChildren } from 'react';
 import { SearchResponseSuggestion } from '@sitecore-search/react';
 
 import PreviewSearchInput from '../PreviewSearchContent/PreviewSearchInput';

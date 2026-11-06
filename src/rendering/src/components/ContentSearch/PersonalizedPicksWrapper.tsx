@@ -1,4 +1,5 @@
-import { LayoutServicePageState, useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
+'use client';
+import { LayoutServicePageState, useSitecore } from '@sitecore-content-sdk/nextjs';
 import { isSearchSDKEnabled } from '../../services/SearchSDKService';
 import PersonalizedPicks from './PersonalizedPicks';
 import { ComponentProps } from 'lib/component-props';
@@ -11,7 +12,8 @@ export type PersonalizedPicksWrapperProps = ComponentProps & {
 };
 
 const PersonalizedPicksWrapper = (props: PersonalizedPicksWrapperProps) => {
-  const { sitecoreContext } = useSitecoreContext();
+  const { page } = useSitecore();
+  const sitecoreContext = page.layout.sitecore.context;
   const isPageEditing = sitecoreContext.pageState === LayoutServicePageState.Edit;
 
   return isSearchSDKEnabled && !isPageEditing ? (

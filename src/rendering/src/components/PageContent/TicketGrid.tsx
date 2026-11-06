@@ -1,29 +1,25 @@
+'use client';
+import type { JSX } from 'react';
 import Link from 'next/link';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { TICKETS } from '../../models/mock-tickets';
 import { ComponentProps } from 'lib/component-props';
-import { useI18n } from 'next-localization';
-import { logTicketSelected } from 'src/services/CdpService';
-import { logTicketSelected as logTicketSelectedCloudSDK } from 'src/services/CloudSDKService';
-import useTicketOfferId from 'src/hooks/useTicketOffer';
+import { useI18n } from 'src/hooks/useI18n';
+import { logTicketSelected } from 'src/services/EventsService';
 
 const TicketGrid = (props: ComponentProps): JSX.Element => {
-  const ticketOfferId = useTicketOfferId();
-
   const ticketsToDisplay = TICKETS.filter((ticket) => !ticket.isUpgrade);
   const sxaStyles = `${props.params?.styles || ''}`;
   const { t } = useI18n();
 
   const handleTicketSelect = async () => {
-    // Log the 'TICKET_SELECTED' custom event to CDP using the Cloud SDK
+    // Log the 'TICKET_SELECTED' custom event
     try {
-      await logTicketSelectedCloudSDK();
+      await logTicketSelected();
     } catch (e) {
       console.error(e);
     }
-
-    return logTicketSelected();
   };
 
   const tickets =
@@ -39,9 +35,6 @@ const TicketGrid = (props: ComponentProps): JSX.Element => {
           </span>
           <div>
             <div className="ticket-price-block">
-              {ticketIndex === ticketOfferId && (
-                <span className="ticket-sale-price">${ticket.salePrice}</span>
-              )}
               <span className="ticket-price">${ticket.price}</span>
             </div>
             {ticket.benefits && (

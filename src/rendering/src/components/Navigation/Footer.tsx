@@ -1,8 +1,10 @@
+'use client';
+import type { JSX } from 'react';
 import Link from 'next/link';
-import { ImageField, Image } from '@sitecore-jss/sitecore-jss-nextjs';
+import { ImageField, Image } from '@sitecore-content-sdk/nextjs';
 import { ComponentProps } from 'lib/component-props';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { useI18n } from 'next-localization';
+import { useI18n } from 'src/hooks/useI18n';
 
 export type FooterProps = ComponentProps & {
   fields: {

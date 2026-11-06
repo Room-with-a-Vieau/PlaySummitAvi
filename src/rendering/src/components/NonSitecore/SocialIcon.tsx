@@ -1,4 +1,6 @@
-import { Field } from '@sitecore-jss/sitecore-jss-nextjs';
+'use client';
+import type { JSX } from 'react';
+import { Field } from '@sitecore-content-sdk/nextjs';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 

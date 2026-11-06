@@ -1,5 +1,4 @@
-import React from 'react';
-import { StoryFn, Meta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/nextjs';
 
 import { Default as Section } from '../../components/PageContent/Section';
 import { Default as SpeakersGrid, SpeakersGridProps } from '../../components/Speakers/SpeakersGrid';

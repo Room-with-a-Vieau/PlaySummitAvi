@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/nextjs';
 
 import HeaderContent, { HeaderContentProps } from '../../components/Navigation/HeaderContent';
 import { mockHeaderProps } from '../Pages/PageStoriesCommon';

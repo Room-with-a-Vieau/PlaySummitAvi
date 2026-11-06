@@ -1,5 +1,4 @@
-import React from 'react';
-import { StoryFn, Meta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/nextjs';
 
 import { Default as SummitFeatures } from '../../components/PageContent/SummitFeatures';
 import {

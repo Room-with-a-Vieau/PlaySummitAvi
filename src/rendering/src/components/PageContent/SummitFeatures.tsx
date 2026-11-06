@@ -1,5 +1,7 @@
+'use client';
+import type { JSX } from 'react';
 import { ComponentWithChildrenProps } from 'lib/component-props';
-import { Placeholder } from '@sitecore-jss/sitecore-jss-nextjs';
+import { Placeholder } from '@sitecore-content-sdk/nextjs';
 
 const SummitFeatures = (props: ComponentWithChildrenProps): JSX.Element => {
   const sxaStyles = `${props.params?.styles || ''}`;

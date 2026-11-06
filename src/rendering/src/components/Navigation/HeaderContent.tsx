@@ -1,20 +1,18 @@
-import { Placeholder, SitecoreContextValue } from '@sitecore-jss/sitecore-jss-nextjs';
+'use client';
+import type { JSX } from 'react';
+import { LayoutServiceContext, Placeholder } from '@sitecore-content-sdk/nextjs';
 
 import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { ParsedUrlQueryInput } from 'querystring';
 import { useEffect, useState } from 'react';
+import { routing } from 'src/i18n/routing';
 import { HeaderProps } from './Header';
 
 export type HeaderContentProps = HeaderProps & {
-  pathname?: string;
-  asPath?: string;
-  query?: string | ParsedUrlQueryInput;
-  sitecoreContext: SitecoreContextValue;
+  canChangeLanguage?: boolean;
+  sitecoreContext: LayoutServiceContext;
 };
 
 const HeaderContent = (props: HeaderContentProps): JSX.Element => {
-  const router = useRouter();
   const [languageLabels, setLanguageLabels] = useState([]);
 
   const sxaStyles = `${props.params?.styles || ''}`;
@@ -33,18 +31,12 @@ const HeaderContent = (props: HeaderContentProps): JSX.Element => {
   }, []);
 
   const changeLanguage = (lang: string) => {
-    if (props.pathname && props.asPath && props.query) {
-      router.push(
-        {
-          pathname: props.pathname,
-          query: props.query,
-        },
-        props.asPath,
-        {
-          locale: lang,
-          shallow: false,
-        }
-      );
+    if (props.canChangeLanguage) {
+      const { pathname, search } = window.location;
+      const localePattern = new RegExp(`^/(${routing.locales.join('|')})(?=/|$)`, 'i');
+      const path = pathname.replace(localePattern, '') || '/';
+      const prefix = lang === routing.defaultLocale ? '' : `/${lang}`;
+      window.location.assign(`${prefix}${path === '/' && prefix ? '' : path}${search}`);
     }
   };
 

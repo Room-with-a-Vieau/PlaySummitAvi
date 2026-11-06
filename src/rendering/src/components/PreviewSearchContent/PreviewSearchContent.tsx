@@ -1,5 +1,7 @@
+'use client';
+import type { JSX } from 'react';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { useRouter } from 'next/router';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import {
   PreviewSearchInitialState,
   PreviewSearchWidgetQuery,
@@ -25,7 +27,8 @@ const PreviewSearchContent = ({
   defaultItemsPerPage = 4,
 }: PreviewSearchContentProps): JSX.Element => {
   const router = useRouter();
-  const { q } = router.query;
+  const pathname = usePathname();
+  const q = useSearchParams()?.get('q');
 
   const {
     widgetRef,
@@ -38,7 +41,7 @@ const PreviewSearchContent = ({
         suggestion: { content_name_context_aware: suggestions = [] } = {},
       } = {},
     },
-    state: { keyphrase = (q as string) || '' },
+    state: { keyphrase = q || '' },
   } = usePreviewSearch<PreviewSearchItemCardProps, InitialState>({
     query: (query: PreviewSearchWidgetQuery) =>
       query
@@ -63,13 +66,9 @@ const PreviewSearchContent = ({
   const onClose = useCallback(() => setIsPreviewSearchOpen(false), []);
 
   useEffect(() => {
-    // subscribe to next/router event
-    router?.events.on('routeChangeStart', onClose);
-    return () => {
-      // unsubscribe to event on unmount to prevent memory leak
-      router?.events.off('routeChangeStart', onClose);
-    };
-  }, [router, onClose]);
+    // Close the popup when the route changes
+    onClose();
+  }, [pathname, q, onClose]);
 
   useEffect(() => {
     if (isPreviewSearchOpen && inputRef.current) {
@@ -128,7 +127,7 @@ const PreviewSearchContent = ({
   useClickOutside([containerRef], onClose);
 
   // Hide preview search when on search page
-  if (router?.pathname === SEARCH_PAGE) {
+  if (pathname === SEARCH_PAGE) {
     return null;
   }
 

@@ -1,4 +1,4 @@
-import React from 'react';
+'use client';
 import { useCountdown } from '../../hooks/useCountdown';
 
 const DateTimeDisplay = ({ value, type }: { value: number; type: string }) => {

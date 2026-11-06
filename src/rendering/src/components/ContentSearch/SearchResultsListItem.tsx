@@ -1,3 +1,4 @@
+'use client';
 import { getSearchItemHref } from 'src/helpers/UrlHelper';
 import { ContentItemModel } from './SearchResultsWidget';
 import Link from 'next/link';

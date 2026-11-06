@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/nextjs';
 
 import { Default as SpeakersGrid } from '../../components/Speakers/SpeakersGrid';
 import { GraphQLSpeaker } from 'src/types/speaker';

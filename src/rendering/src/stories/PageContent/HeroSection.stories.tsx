@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/nextjs';
 
 import { Default as HeroSection, HeroProps } from '../../components/PageContent/HeroSection';
 

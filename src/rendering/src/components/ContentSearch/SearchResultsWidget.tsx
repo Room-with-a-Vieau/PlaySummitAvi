@@ -1,4 +1,6 @@
-import React, { useCallback, useEffect, useMemo } from 'react';
+'use client';
+import type { JSX } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 import { SEARCH_PAGE } from '../../helpers/ContentSearchHelper';
 import { isSearchSDKEnabled } from '../../services/SearchSDKService';
 import {
@@ -10,7 +12,7 @@ import {
   useSearchResultsSelectedFilters,
   widget,
 } from '@sitecore-search/react';
-import { useRouter } from 'next/router';
+import { useRouter, useSearchParams } from 'next/navigation';
 import SearchResultsLayout from './SearchResultsLayout';
 import SearchResultsListing from './SearchResultsListing';
 import SearchResultsListItem from './SearchResultsListItem';
@@ -41,7 +43,7 @@ const SearchResults = ({
   defaultItemsPerPage = 6,
 }: SearchResultsProps): JSX.Element => {
   const router = useRouter();
-  const q = useMemo(() => (router?.query['q'] as string) ?? '', [router?.query]);
+  const q = useSearchParams()?.get('q') ?? '';
 
   const {
     widgetRef,

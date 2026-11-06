@@ -1,8 +1,6 @@
-import React from 'react';
-import { StoryFn, Meta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/nextjs';
 
 import HeaderContent from '../../components/Navigation/HeaderContent';
-import HeaderCdpMessageBar from '../../components/HeaderCdpMessageBar';
 import { Default as HeroSection, HeroProps } from '../../components/PageContent/HeroSection';
 import {
   Default as ThreeColumnsSection,
@@ -217,7 +215,6 @@ const Template: StoryFn<typeof HeroSection> = () => {
         <HeaderContent {...mockHeaderProps} />
       </header>
       <main>
-        <HeaderCdpMessageBar />
         <HeroSection {...heroProps} />
         <ThreeColumnsSection {...threeColProps} />
         <SelectedSponsorsGrid {...sponsorProps} />

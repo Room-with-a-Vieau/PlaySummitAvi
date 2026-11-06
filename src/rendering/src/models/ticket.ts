@@ -8,5 +8,4 @@ export interface Ticket {
   color?: string;
   benefits?: string[];
   upgradeTargetTicket?: number;
-  salePrice?: number;
 }

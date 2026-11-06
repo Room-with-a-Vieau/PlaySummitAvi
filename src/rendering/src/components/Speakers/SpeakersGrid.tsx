@@ -1,10 +1,12 @@
+'use client';
+import type { JSX } from 'react';
 import Link from 'next/link';
 import {
   Text,
   Image,
-  useSitecoreContext,
+  useSitecore,
   LayoutServicePageState,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import { ComponentProps } from 'lib/component-props';
 import { GraphQLSpeaker } from 'src/types/speaker';
 
@@ -21,7 +23,8 @@ export type SpeakersGridProps = ComponentProps & {
 };
 
 const SpeakersGrid = (props: SpeakersGridProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
+  const { page } = useSitecore();
+  const sitecoreContext = page.layout.sitecore.context;
 
   const isPageEditing = sitecoreContext.pageState === LayoutServicePageState.Edit;
   const hasSpeakers = !!props.fields?.data?.item;

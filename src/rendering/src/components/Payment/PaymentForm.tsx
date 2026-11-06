@@ -1,3 +1,5 @@
+'use client';
+import type { JSX } from 'react';
 import { ComponentProps } from 'lib/component-props';
 import OrderSummary from './OrderSummary';
 import PaymentAndBillingForm from './PaymentAndBillingForm';

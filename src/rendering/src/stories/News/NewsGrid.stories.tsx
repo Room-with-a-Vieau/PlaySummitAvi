@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/nextjs';
 
 import { Default as NewsGrid } from '../../components/News/NewsGrid';
 import { News } from 'src/types/news';

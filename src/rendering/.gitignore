@@ -36,3 +36,8 @@
 # DEMO TEAM CUSTOMIZATION - Extra ignored files
 /storybook-static
 # END CUSTOMIZATION
+
+# Sitecore Content SDK generated files
+.sitecore/
+
+*.tsbuildinfo

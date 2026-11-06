@@ -1,3 +1,5 @@
+'use client';
+import type { JSX } from 'react';
 import Link from 'next/link';
 import {
   Text,
@@ -5,8 +7,8 @@ import {
   Image,
   withDatasourceCheck,
   LayoutServicePageState,
-  useSitecoreContext,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+  useSitecore,
+} from '@sitecore-content-sdk/nextjs';
 import { ComponentProps } from 'lib/component-props';
 import { Vendor } from 'src/types/vendor';
 
@@ -19,7 +21,8 @@ type FeaturedVendorsProps = ComponentProps & {
 };
 
 const FeaturedVendors = (props: FeaturedVendorsProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
+  const { page } = useSitecore();
+  const sitecoreContext = page.layout.sitecore.context;
 
   const isPageEditing = sitecoreContext.pageState === LayoutServicePageState.Edit;
   const hasVendors = !!props?.fields?.Vendors?.length;

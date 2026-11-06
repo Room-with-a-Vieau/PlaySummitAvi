@@ -1,6 +1,7 @@
+'use client';
+import type { JSX } from 'react';
 import { useEffect, useState } from 'react';
 
-import useTicketOfferId from 'src/hooks/useTicketOffer';
 import { TICKETS } from '../../models/mock-tickets';
 
 type OrderSummaryProps = {
@@ -9,7 +10,6 @@ type OrderSummaryProps = {
 
 const OrderSummary = (props: OrderSummaryProps): JSX.Element => {
   const [ticketID, setTicketID] = useState(null);
-  const ticketOfferId = useTicketOfferId();
 
   useEffect(() => {
     setTicketID(
@@ -33,7 +33,7 @@ const OrderSummary = (props: OrderSummaryProps): JSX.Element => {
       <div></div>
     );
 
-  const ticketPrice = ticketID === ticketOfferId ? ticket?.salePrice : ticket?.price;
+  const ticketPrice = ticket?.price;
 
   if (!ticket) return <></>;
 

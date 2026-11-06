@@ -1,9 +1,10 @@
 import React from 'react';
-import { SitecoreContext, LayoutServicePageState } from '@sitecore-jss/sitecore-jss-nextjs';
-import { componentBuilder } from '../src/temp/componentBuilder';
+import { LayoutServicePageState, SitecoreProvider } from '@sitecore-content-sdk/nextjs';
+import { NextIntlClientProvider } from 'next-intl';
+import components from '../.sitecore/component-map.client';
+import scConfig from '../sitecore.config';
 import '../src/assets/css/abstracts/mixins.css';
 import '../src/assets/css/main.css';
-import { I18nProvider } from 'next-localization';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -14,6 +15,7 @@ export const parameters = {
     },
   },
   layout: 'fullscreen',
+  nextjs: { appDirectory: true },
   breakpoints: {
     breakpointNames: {
       default: '0',
@@ -62,17 +64,19 @@ export const mockLayoutData = {
   },
 };
 
+const mockPage = {
+  locale: 'en',
+  siteName: 'playwebsite',
+  mode: { name: 'normal', isNormal: true, isEditing: false, isPreview: false, isDesignLibrary: false },
+  layout: mockLayoutData,
+};
+
 export const decorators = [
   (Story) => (
-    <SitecoreContext
-      componentFactory={componentBuilder.getComponentFactory({
-        isEditing: mockLayoutData.sitecore.context.pageEditing,
-      })}
-      layoutData={mockLayoutData}
-    >
-      <I18nProvider>
+    <NextIntlClientProvider locale="en" messages={{}}>
+      <SitecoreProvider api={scConfig.api} componentMap={components} page={mockPage}>
         <Story />
-      </I18nProvider>
-    </SitecoreContext>
+      </SitecoreProvider>
+    </NextIntlClientProvider>
   ),
 ];

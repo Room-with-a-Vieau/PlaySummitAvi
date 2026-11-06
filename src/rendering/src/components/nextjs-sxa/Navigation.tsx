@@ -1,11 +1,13 @@
+'use client';
+import type { JSX } from 'react';
 import React, { useState } from 'react';
 import {
   Link,
   LinkField,
   Text,
   TextField,
-  useSitecoreContext,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+  useSitecore,
+} from '@sitecore-content-sdk/nextjs';
 
 interface Fields {
   Id: string;
@@ -49,7 +51,8 @@ const getLinkField = (props: NavigationProps): LinkField => ({
 
 export const Default = (props: NavigationProps): JSX.Element => {
   const [isOpenMenu, openMenu] = useState(false);
-  const { sitecoreContext } = useSitecoreContext();
+  const { page } = useSitecore();
+  const sitecoreContext = page.layout.sitecore.context;
   const styles =
     props.params != null
       ? `${props.params.GridParameters ?? ''} ${props.params.Styles ?? ''}`.trimEnd()
@@ -108,7 +111,8 @@ export const Default = (props: NavigationProps): JSX.Element => {
 };
 
 const NavigationList = (props: NavigationProps) => {
-  const { sitecoreContext } = useSitecoreContext();
+  const { page } = useSitecore();
+  const sitecoreContext = page.layout.sitecore.context;
 
   let children: JSX.Element[] = [];
   if (props.fields.Children && props.fields.Children.length) {
@@ -157,7 +161,8 @@ const getLinkTitle = (props: NavigationProps): string | undefined => {
 
 // DEMO TEAM CUSTOMIZATION - New variant
 export const LandingPagesNavigation = (props: NavigationProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
+  const { page } = useSitecore();
+  const sitecoreContext = page.layout.sitecore.context;
 
   if (!Object.values(props.fields).length) {
     return (

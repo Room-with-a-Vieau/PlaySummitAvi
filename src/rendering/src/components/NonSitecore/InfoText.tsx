@@ -1,3 +1,5 @@
+'use client';
+import type { JSX } from 'react';
 import { PropsWithChildren } from 'react';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

@@ -1,4 +1,4 @@
-import { getPublicUrl } from '@sitecore-jss/sitecore-jss-nextjs/utils';
+import { getPublicUrl } from 'src/helpers/PublicUrlHelper';
 
 export const getAbsoluteUrlPath = (url: string): string => {
   const [, path] = String(url).match(/^https?:\/\/[^/]+(.+)$/) || [];

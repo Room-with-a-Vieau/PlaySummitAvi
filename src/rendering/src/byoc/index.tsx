@@ -1,13 +1,10 @@
-import React from 'react';
+import React, { JSX } from 'react';
 import * as FEAAS from '@sitecore-feaas/clientside/react';
-import * as Events from '@sitecore-cloudsdk/events/browser';
+import * as Events from '@sitecore-content-sdk/events';
+import { LayoutServicePageState, SitecoreProviderReactContext } from '@sitecore-content-sdk/nextjs';
 import '@sitecore/components/context';
 import dynamic from 'next/dynamic';
-import config from 'temp/config';
-import {
-  LayoutServicePageState,
-  SitecoreContextReactContext,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+import config from 'sitecore.config';
 /**
  * This is an out-of-box bundler for External components (BYOC) (see Sitecore documentation for more details)
  * It enables registering components in client-only or SSR/hybrid contexts
@@ -15,9 +12,7 @@ import {
  */
 
 // Import your client-only components via client-bundle. Nextjs's dynamic() call will ensure they are only rendered client-side
-const ClientBundle = dynamic(() => import('./index.client'), {
-  ssr: false,
-});
+const ClientBundle = dynamic(() => import('./index.client'));
 
 // As long as component bundle is exported and rendered on page (as an empty element), client-only BYOC components are registered and become available
 // The rest of components will be regsitered in both server and client-side contexts when this module is imported into Layout
@@ -27,13 +22,14 @@ FEAAS.enableNextClientsideComponents(dynamic, ClientBundle);
 import './index.hybrid';
 
 const BYOCInit = (): JSX.Element | null => {
-  const sitecoreContext = React.useContext(SitecoreContextReactContext).context;
+  const { page } = React.useContext(SitecoreProviderReactContext);
+  const { pageState } = page.layout.sitecore.context;
   // Set context properties to be available within BYOC components
   FEAAS.setContextProperties({
-    sitecoreEdgeUrl: config.sitecoreEdgeUrl,
-    sitecoreEdgeContextId: config.sitecoreEdgeContextId,
-    pageState: sitecoreContext?.pageState || LayoutServicePageState.Normal,
-    siteName: sitecoreContext?.site?.name || config.sitecoreSiteName,
+    sitecoreEdgeUrl: config.api.edge?.edgeUrl,
+    sitecoreEdgeContextId: config.api.edge?.contextId,
+    pageState: pageState || LayoutServicePageState.Normal,
+    siteName: page.siteName || config.defaultSite,
     eventsSDK: Events,
   });
 

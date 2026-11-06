@@ -1,5 +1,4 @@
-import React from 'react';
-import { StoryFn, Meta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/nextjs';
 import { SearchResponseSuggestion } from '@sitecore-search/react';
 
 import PreviewSearchPopup from '../../components/PreviewSearchContent/PreviewSearchPopup';

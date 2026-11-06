@@ -1,10 +1,12 @@
+'use client';
+import type { JSX } from 'react';
 import Link from 'next/link';
-import { Text } from '@sitecore-jss/sitecore-jss-nextjs';
+import { Text } from '@sitecore-content-sdk/nextjs';
 import { getSessionTime } from '../../helpers/DateHelper';
 import { GraphQLSession } from 'src/types/session';
 import InfoText from '../NonSitecore/InfoText';
 import { faClock, faDoorOpen, faUser } from '@fortawesome/free-solid-svg-icons';
-import { useI18n } from 'next-localization';
+import { useI18n } from 'src/hooks/useI18n';
 
 const SessionListItem = (props: GraphQLSession): JSX.Element => {
   const premiumCssClass = props.premium?.value ? 'premium' : '';

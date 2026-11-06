@@ -1,5 +1,6 @@
-import React from 'react';
-import { Field, Text, useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
+'use client';
+import type { JSX } from 'react';
+import { Field, Text, useSitecore } from '@sitecore-content-sdk/nextjs';
 import { ComponentProps } from 'lib/component-props';
 import { isEditingOrPreviewingPage } from '../../helpers/LayoutServiceHelper';
 
@@ -10,7 +11,8 @@ type EmbedSendFormProps = ComponentProps & {
 };
 
 const EmbedSendForm = (props: EmbedSendFormProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
+  const { page } = useSitecore();
+  const sitecoreContext = page.layout.sitecore.context;
   const sxaStyles = `${props.params?.styles || ''}`;
 
   if (isEditingOrPreviewingPage(sitecoreContext.pageState)) {

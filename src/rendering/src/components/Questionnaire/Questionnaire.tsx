@@ -1,15 +1,16 @@
+'use client';
+import type { JSX } from 'react';
 import {
   Field,
   Text,
   withDatasourceCheck,
   RichTextField,
   ImageField,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import { ComponentProps } from 'lib/component-props';
 import { QuestionnaireQuestion } from './QuestionnaireQuestion';
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { logAudiencePreferenceEvent } from 'src/services/CdpService';
-import { logAudiencePreferenceEvent as logAudiencePreferenceEventCloudSDK } from 'src/services/CloudSDKService';
+import { logAudiencePreferenceEvent } from 'src/services/EventsService';
 import { GraphQLSession } from 'src/types/session';
 import SessionItem from 'components/Sessions/SessionItem';
 
@@ -111,17 +112,15 @@ const Questionnaire = (props: QuestionnaireProps): JSX.Element => {
       };
 
       if (!!audience) {
-        // Log the 'AUDIENCE_PREFERENCE' custom event to CDP using the Cloud SDK
+        // Log the 'AUDIENCE_PREFERENCE' custom event
         try {
-          await logAudiencePreferenceEventCloudSDK(audience);
+          await logAudiencePreferenceEvent(audience);
         } catch (e) {
           console.error(e);
         }
 
-        logAudiencePreferenceEvent(audience).then(() => {
-          setSelectedAudience(audience);
-          goToNext();
-        });
+        setSelectedAudience(audience);
+        goToNext();
       }
 
       if (!!sessionType) {

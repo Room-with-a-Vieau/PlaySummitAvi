@@ -1,3 +1,5 @@
+'use client';
+import type { JSX } from 'react';
 import { getPublicAssetUrl } from 'src/helpers/PublicUrlHelper';
 import FacebookSponsoredPost from './FacebookSponsoredPost';
 import FacebookPost from './FacebookPost';

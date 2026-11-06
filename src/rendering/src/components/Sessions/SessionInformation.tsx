@@ -1,11 +1,12 @@
-import Head from 'next/head';
+'use client';
+import type { JSX } from 'react';
 import { ComponentWithChildrenProps } from 'lib/component-props';
-import { Field, ImageField, Placeholder, RichText } from '@sitecore-jss/sitecore-jss-nextjs';
+import { Field, ImageField, Placeholder, RichText } from '@sitecore-content-sdk/nextjs';
 import { Timeslot } from '../../interfaces/Timeslot';
 import { Speaker } from 'src/types/speaker';
 import { Day } from 'src/types/day';
 import { Room } from 'src/types/room';
-import { useI18n } from 'next-localization';
+import { useI18n } from 'src/hooks/useI18n';
 import { removeTags } from 'src/helpers/ContentSearchHelper';
 
 export type SessionInformationProps = ComponentWithChildrenProps & {
@@ -33,13 +34,13 @@ const SessionInformation = (props: SessionInformationProps): JSX.Element => {
 
   return (
     <>
-      <Head>
+      <>
         <meta name="premiumSession" content={premiumSessionMetaValue} />
         <meta property="og:description" content={removeTags(props.fields?.Description?.value)} />
         <meta property="og:title" content={props.fields?.Name?.value} />
         <meta property="og:image" content={props.fields?.Image?.value.src} />
         <meta property="og:type" content="session" />
-      </Head>
+      </>
       <section className={`section information-section ${sxaStyles}`}>
         <div className="section-content container">
           <div className="information-grid">

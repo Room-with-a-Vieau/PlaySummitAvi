@@ -1,4 +1,6 @@
-import { Field, Image, ImageField, Text } from '@sitecore-jss/sitecore-jss-nextjs';
+'use client';
+import type { JSX } from 'react';
+import { Field, Image, ImageField, Text } from '@sitecore-content-sdk/nextjs';
 import { ComponentProps } from 'lib/component-props';
 import InfoText from '../NonSitecore/InfoText';
 import { faCalendar, faClock, faDoorOpen } from '@fortawesome/free-solid-svg-icons';
@@ -6,7 +8,7 @@ import { getSessionDays, getSessionTime } from '../../helpers/DateHelper';
 import { Room } from 'src/types/room';
 import { Day } from 'src/types/day';
 import { Timeslot } from 'src/interfaces/Timeslot';
-import { useI18n } from 'next-localization';
+import { useI18n } from 'src/hooks/useI18n';
 
 export type SessionInformationPageHeroProps = ComponentProps & {
   fields: {

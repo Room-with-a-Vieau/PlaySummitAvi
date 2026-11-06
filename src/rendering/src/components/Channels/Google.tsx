@@ -1,3 +1,5 @@
+'use client';
+import type { JSX } from 'react';
 import { getPublicAssetUrl } from 'src/helpers/PublicUrlHelper';
 import { GOOGLE_RESULTS, PLAY_SUMMIT_POSTS, USER } from './constants';
 import GoogleResult from './GoogleResult';

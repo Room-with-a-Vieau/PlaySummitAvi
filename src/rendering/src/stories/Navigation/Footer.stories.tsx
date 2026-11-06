@@ -1,5 +1,4 @@
-import React from 'react';
-import { StoryFn, Meta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/nextjs';
 
 import { Default as Footer } from '../../components/Navigation/Footer';
 import { mockFooterProps } from '../Pages/PageStoriesCommon';

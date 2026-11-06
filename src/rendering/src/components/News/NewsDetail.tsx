@@ -1,3 +1,5 @@
+'use client';
+import type { JSX } from 'react';
 import {
   RichText,
   Text,
@@ -5,10 +7,9 @@ import {
   ImageField,
   Image,
   DateField,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import { ComponentProps } from 'lib/component-props';
 import { newsDateFormatter } from '../../helpers/DateHelper';
-import Head from 'next/head';
 import { removeTags } from 'src/helpers/ContentSearchHelper';
 
 type NewsDetailProps = ComponentProps & {
@@ -26,12 +27,12 @@ const NewsDetail = (props: NewsDetailProps): JSX.Element => {
 
   return (
     <>
-      <Head>
+      <>
         <meta property="og:description" content={removeTags(props.fields?.Excerpt?.value)} />
         <meta property="og:title" content={props.fields?.Title?.value} />
         <meta property="og:image" content={props.fields?.Image?.value.src} />
         <meta property="og:type" content="news" />
-      </Head>
+      </>
       <section className={`section news-detail ${sxaStyles}`}>
         <div className="section-content left-content">
           <div className="container">

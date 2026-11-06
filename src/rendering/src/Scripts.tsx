@@ -1,15 +1,14 @@
-import { EditingScripts } from '@sitecore-jss/sitecore-jss-nextjs';
-// The BYOC bundle imports external (BYOC) components into the app and makes sure they are ready to be used
-import BYOC from 'src/byoc';
-import CdpPageView from 'components/nextjs-sxa/CdpPageView';
-import FEAASScripts from 'components/nextjs-sxa/FEAASScripts';
+'use client';
+import { JSX } from 'react';
+import { EditingScripts } from '@sitecore-content-sdk/nextjs';
+import CdpPageView from 'components/content-sdk/CdpPageView';
+import BYOCInit from './byoc';
 
 const Scripts = (): JSX.Element => {
   return (
     <>
-      <BYOC />
+      <BYOCInit />
       <CdpPageView />
-      <FEAASScripts />
       <EditingScripts />
     </>
   );

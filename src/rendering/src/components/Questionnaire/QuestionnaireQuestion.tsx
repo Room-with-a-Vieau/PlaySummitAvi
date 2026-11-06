@@ -1,4 +1,6 @@
-import { Image, Text, RichText } from '@sitecore-jss/sitecore-jss-nextjs';
+'use client';
+import type { JSX } from 'react';
+import { Image, Text, RichText } from '@sitecore-content-sdk/nextjs';
 import {
   QuestionnaireOption,
   QuestionnaireQuestion as QuestionnaireQuestionType,

@@ -1,8 +1,10 @@
-import { Field } from '@sitecore-jss/sitecore-jss-nextjs';
+'use client';
+import type { JSX } from 'react';
+import { Field } from '@sitecore-content-sdk/nextjs';
 import { ComponentProps } from 'lib/component-props';
 import RequireDatasource from '../NonSitecore/RequireDatasource';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { useSearchParams } from 'next/navigation';
 
 type PaymentProgressProps = ComponentProps & {
   fields: {
@@ -23,14 +25,14 @@ function GetActiveClass(activeStep: number, index: number) {
 }
 
 const PaymentProgress = (props: PaymentProgressProps): JSX.Element => {
-  const router = useRouter();
+  const searchParams = useSearchParams();
   const sxaStyles = `${props.params?.styles || ''}`;
 
   if (!props.fields) {
     return <RequireDatasource />;
   }
 
-  const ticketId = router?.query?.ticket ?? 0;
+  const ticketId = searchParams?.get('ticket') ?? 0;
 
   const steps = [
     {

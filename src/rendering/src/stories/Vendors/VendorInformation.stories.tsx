@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/nextjs';
 import { SESSIONS } from '../mock-sessions';
 
 import { Default as VendorInformation } from '../../components/Vendors/VendorInformation';

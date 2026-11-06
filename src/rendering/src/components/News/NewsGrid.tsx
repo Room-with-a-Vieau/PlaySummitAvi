@@ -1,11 +1,13 @@
+'use client';
+import type { JSX } from 'react';
 import profile from '../../../public/assets/img/news/profile-pic.jpg';
 import Link from 'next/link';
 import {
   Image,
   withDatasourceCheck,
   LayoutServicePageState,
-  useSitecoreContext,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+  useSitecore,
+} from '@sitecore-content-sdk/nextjs';
 import { ComponentProps } from 'lib/component-props';
 import { News } from 'src/types/news';
 import { getPublicAssetUrl } from '../../../src/helpers/PublicUrlHelper';
@@ -17,7 +19,8 @@ type NewsGridProps = ComponentProps & {
 };
 
 const NewsGrid = (props: NewsGridProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
+  const { page } = useSitecore();
+  const sitecoreContext = page.layout.sitecore.context;
 
   const isPageEditing = sitecoreContext.pageState === LayoutServicePageState.Edit;
   const hasNews = !!props.fields;

@@ -1,12 +1,11 @@
-import { getPublicUrl } from '@sitecore-jss/sitecore-jss-nextjs/utils';
+/**
+ * Returns the public URL of this website.
+ */
+export const getPublicUrl = (): string =>
+  process.env.NEXT_PUBLIC_PUBLIC_URL ||
+  (typeof window !== 'undefined' ? window.location.origin : '');
 
-export const getPublicAssetUrl = (): string => {
-  const DEFAULT_PUBLIC_URL = 'http://localhost:3000';
-
-  let url = getPublicUrl();
-  if (url === DEFAULT_PUBLIC_URL) {
-    url = '';
-  }
-
-  return url;
-};
+/**
+ * Returns the prefix for assets in /public. Empty unless a public URL is configured.
+ */
+export const getPublicAssetUrl = (): string => process.env.NEXT_PUBLIC_PUBLIC_URL || '';

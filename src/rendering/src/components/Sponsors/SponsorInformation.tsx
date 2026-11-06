@@ -1,6 +1,7 @@
-import { Field, Placeholder, RichText } from '@sitecore-jss/sitecore-jss-nextjs';
+'use client';
+import type { JSX } from 'react';
+import { Field, Placeholder, RichText } from '@sitecore-content-sdk/nextjs';
 import { ComponentWithChildrenProps } from 'lib/component-props';
-import Head from 'next/head';
 import { removeTags } from 'src/helpers/ContentSearchHelper';
 
 export type SponsorInformationProps = ComponentWithChildrenProps & {
@@ -18,9 +19,9 @@ const SponsorInformation = (props: SponsorInformationProps): JSX.Element => {
 
   return (
     <>
-      <Head>
+      <>
         <meta property="og:description" content={removeTags(props.fields?.Description?.value)} />
-      </Head>
+      </>
       <section className={`section information-section ${sxaStyles}`}>
         <div className="section-content container">
           <div className="information-grid">

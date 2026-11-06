@@ -1,3 +1,5 @@
+'use client';
+import type { JSX } from 'react';
 import Link from 'next/link';
 import { getPublicAssetUrl } from 'src/helpers/PublicUrlHelper';
 

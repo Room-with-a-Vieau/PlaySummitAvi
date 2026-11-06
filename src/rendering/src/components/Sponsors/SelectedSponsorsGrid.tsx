@@ -1,10 +1,12 @@
+'use client';
+import type { JSX } from 'react';
 import Link from 'next/link';
 import {
   Image,
   withDatasourceCheck,
   LayoutServicePageState,
-  useSitecoreContext,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+  useSitecore,
+} from '@sitecore-content-sdk/nextjs';
 import { ComponentProps } from 'lib/component-props';
 import { Sponsor } from 'src/types/sponsor';
 
@@ -15,7 +17,8 @@ export type SelectedSponsorsGridProps = ComponentProps & {
 };
 
 const SelectedSponsorsGrid = (props: SelectedSponsorsGridProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
+  const { page } = useSitecore();
+  const sitecoreContext = page.layout.sitecore.context;
 
   const isPageEditing = sitecoreContext.pageState === LayoutServicePageState.Edit;
   const hasSponsors = !!props?.fields?.Sponsors?.length;

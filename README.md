@@ -7,7 +7,7 @@ A headless site built to showcase the power of Sitecore's composable digital sol
 This repository is a Sitecore DXP demo that uses:
 
 - Sitecore XM Cloud
-  - XM Cloud Pages Personalize
+  - SitecoreAI page personalization
   - XM Cloud Pages Analyze
 - Sitecore Content Hub DAM and CMP
 - Sitecore Search

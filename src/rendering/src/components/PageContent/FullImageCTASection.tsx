@@ -1,10 +1,12 @@
+'use client';
+import type { JSX } from 'react';
 import {
   Link,
   Image,
   ImageField,
   LinkField,
   withDatasourceCheck,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import { ComponentProps } from 'lib/component-props';
 
 type FullImageCTASectionProps = ComponentProps & {

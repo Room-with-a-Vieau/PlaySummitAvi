@@ -1,3 +1,5 @@
+'use client';
+import type { JSX } from 'react';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -6,9 +8,9 @@ import {
   ImageField,
   Text,
   withDatasourceCheck,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import { ComponentProps } from 'lib/component-props';
-import { useI18n } from 'next-localization';
+import { useI18n } from 'src/hooks/useI18n';
 import Link from 'next/link';
 import { Speaker } from 'src/types/speaker';
 

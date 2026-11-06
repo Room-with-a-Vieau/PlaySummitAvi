@@ -1,3 +1,5 @@
+'use client';
+import type { JSX } from 'react';
 import {
   Field,
   ImageField,
@@ -6,7 +8,7 @@ import {
   Link,
   Image,
   withDatasourceCheck,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import { ComponentProps } from 'lib/component-props';
 
 export type SummitFeatureProps = ComponentProps & {

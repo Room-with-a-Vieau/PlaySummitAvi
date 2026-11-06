@@ -1,7 +1,8 @@
-import { useRouter } from 'next/router';
+'use client';
+import type { JSX } from 'react';
 import { ComponentProps } from 'lib/component-props';
 import HeaderContent from './HeaderContent';
-import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
+import { useSitecore } from '@sitecore-content-sdk/nextjs';
 
 export type HeaderProps = ComponentProps & {
   fields: {
@@ -32,15 +33,12 @@ export type HeaderProps = ComponentProps & {
 };
 
 const Header = (props: HeaderProps): JSX.Element => {
-  const router = useRouter();
-  const { pathname, asPath, query } = router;
-  const { sitecoreContext } = useSitecoreContext();
+  const { page } = useSitecore();
+  const sitecoreContext = page.layout.sitecore.context;
 
   return (
     <HeaderContent
-      pathname={pathname}
-      asPath={asPath}
-      query={query}
+      canChangeLanguage
       sitecoreContext={sitecoreContext}
       {...props}
     />

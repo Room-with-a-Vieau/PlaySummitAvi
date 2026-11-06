@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+'use client';
+import type { JSX } from 'react';
+import { useState } from 'react';
 import { WidgetDataType, useQuestions, widget } from '@sitecore-search/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';

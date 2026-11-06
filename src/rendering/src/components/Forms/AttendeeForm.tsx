@@ -1,13 +1,14 @@
-import React, { FormEvent, useEffect, useState } from 'react';
-import Router from 'next/router';
+'use client';
+import type { JSX } from 'react';
+import { FormEvent, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { ComponentProps } from 'lib/component-props';
 import { identifyVisitor } from '../../services/IdentificationService';
-import { getUserData } from '../../helpers/GuestDataHelper';
-import { logAttendeeFormCompleted } from 'src/services/CdpService';
-import { logAttendeeFormCompleted as logAttendeeFormCompletedCloudSDK } from 'src/services/CloudSDKService';
+import { logAttendeeFormCompleted } from 'src/services/EventsService';
 
 const AttendeeForm = (props: ComponentProps): JSX.Element => {
+  const router = useRouter();
   const ticketId =
     typeof window === 'undefined' ? '0' : new URLSearchParams(window.location.search).get('ticket');
 
@@ -16,18 +17,6 @@ const AttendeeForm = (props: ComponentProps): JSX.Element => {
   const [email, setEmail] = useState('');
 
   const sxaStyles = `${props.params?.styles || ''}`;
-
-  useEffect(() => {
-    const setUserData = async () => {
-      const userData = await getUserData();
-
-      setFirstName(userData.firstName);
-      setLastName(userData.lastName);
-      setEmail(userData.email);
-    };
-
-    setUserData();
-  }, []);
 
   const handleFormSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -38,16 +27,15 @@ const AttendeeForm = (props: ComponentProps): JSX.Element => {
     }
 
     await identifyVisitor(email, firstName, lastName);
-    await logAttendeeFormCompleted();
 
-    // Log the 'ATTENDEE_FORM_COMPLETED' custom event to CDP using the Cloud SDK
+    // Log the 'ATTENDEE_FORM_COMPLETED' custom event
     try {
-      await logAttendeeFormCompletedCloudSDK();
+      await logAttendeeFormCompleted();
     } catch (e) {
       console.error(e);
     }
 
-    Router.push(`/tickets/payment?ticket=${ticketId}`);
+    router.push(`/tickets/payment?ticket=${ticketId}`);
   };
 
   return (

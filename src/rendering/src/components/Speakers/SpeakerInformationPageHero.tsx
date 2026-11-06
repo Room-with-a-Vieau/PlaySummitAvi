@@ -1,14 +1,15 @@
+'use client';
+import type { JSX } from 'react';
 import {
   Field,
   ImageField,
   LayoutServicePageState,
   Text,
-  useSitecoreContext,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+  useSitecore,
+} from '@sitecore-content-sdk/nextjs';
 import { ComponentProps } from 'lib/component-props';
 import InformationPageHero from '../NonSitecore/InformationPageHero';
-import { useI18n } from 'next-localization';
-import Head from 'next/head';
+import { useI18n } from 'src/hooks/useI18n';
 
 export type SpeakerInformationPageHeroProps = ComponentProps & {
   fields: {
@@ -26,7 +27,8 @@ export type SpeakerInformationPageHeroProps = ComponentProps & {
 };
 
 const SpeakerInformationPageHero = (props: SpeakerInformationPageHeroProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
+  const { page } = useSitecore();
+  const sitecoreContext = page.layout.sitecore.context;
   const { t } = useI18n();
 
   const isPageEditing = sitecoreContext.pageState === LayoutServicePageState.Edit;
@@ -72,11 +74,11 @@ const SpeakerInformationPageHero = (props: SpeakerInformationPageHeroProps): JSX
 
   return (
     <>
-      <Head>
+      <>
         <meta property="og:title" content={props.fields?.Name?.value} />
         <meta property="og:image" content={props.fields?.Picture?.value.src} />
         <meta property="og:type" content="speaker" />
-      </Head>
+      </>
       <InformationPageHero
         {...propsRest}
         fields={newFields}

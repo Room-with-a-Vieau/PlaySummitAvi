@@ -1,8 +1,10 @@
+'use client';
+import type { JSX } from 'react';
 import Link from 'next/link';
-import React, { useState } from 'react';
-import { ImageField, Image } from '@sitecore-jss/sitecore-jss-nextjs';
+import { useState } from 'react';
+import { ImageField, Image } from '@sitecore-content-sdk/nextjs';
 import { ComponentProps } from 'lib/component-props';
-import { useI18n } from 'next-localization';
+import { useI18n } from 'src/hooks/useI18n';
 import PreviewSearchWidget from '../PreviewSearchContent/PreviewSearchContent';
 import { isSearchSDKEnabled } from '../../services/SearchSDKService';
 

@@ -1,11 +1,13 @@
+'use client';
+import type { JSX } from 'react';
 import Link from 'next/link';
 import {
   Text,
   Image,
   withDatasourceCheck,
-  useSitecoreContext,
+  useSitecore,
   LayoutServicePageState,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import { ComponentProps } from 'lib/component-props';
 import { Vendor } from 'src/types/vendor';
 import { getPublicAssetUrl } from '../../../src/helpers/PublicUrlHelper';
@@ -17,7 +19,8 @@ type VendorsGridProps = ComponentProps & {
 };
 
 const VendorsGrid = (props: VendorsGridProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
+  const { page } = useSitecore();
+  const sitecoreContext = page.layout.sitecore.context;
 
   const publicUrl = getPublicAssetUrl();
   const isPageEditing = sitecoreContext.pageState === LayoutServicePageState.Edit;

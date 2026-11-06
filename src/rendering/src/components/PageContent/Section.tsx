@@ -1,3 +1,5 @@
+'use client';
+import type { JSX } from 'react';
 import {
   RichText,
   Text,
@@ -5,7 +7,7 @@ import {
   Link,
   Placeholder,
   LinkField,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import { ComponentWithChildrenProps } from 'lib/component-props';
 
 type SectionProps = ComponentWithChildrenProps & {

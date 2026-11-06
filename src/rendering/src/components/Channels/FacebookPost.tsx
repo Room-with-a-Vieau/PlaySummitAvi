@@ -1,3 +1,5 @@
+'use client';
+import type { JSX } from 'react';
 import { faComment, faShareSquare, faThumbsUp } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 

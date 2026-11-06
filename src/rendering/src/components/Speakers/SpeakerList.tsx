@@ -1,9 +1,11 @@
+'use client';
+import type { JSX } from 'react';
 import Link from 'next/link';
-import { Text, Image } from '@sitecore-jss/sitecore-jss-nextjs';
+import { Text, Image } from '@sitecore-content-sdk/nextjs';
 import { Speaker } from 'src/types/speaker';
 import InfoText from '../NonSitecore/InfoText';
 import { faBuilding, faMapMarkerAlt, faUserTie } from '@fortawesome/free-solid-svg-icons';
-import { useI18n } from 'next-localization';
+import { useI18n } from 'src/hooks/useI18n';
 
 const SpeakerListItem = (speaker: Speaker): JSX.Element => {
   const featuredSpeakerCssClass = speaker.fields.Featured.value ? 'featured' : '';

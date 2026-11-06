@@ -1,10 +1,11 @@
-import React from 'react';
+'use client';
+import type { JSX } from 'react';
 import {
   ComponentParams,
   ComponentRendering,
   Placeholder,
-  useSitecoreContext,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+  useSitecore,
+} from '@sitecore-content-sdk/nextjs';
 
 const BACKGROUND_REG_EXP = new RegExp(
   /[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}/gi
@@ -16,7 +17,8 @@ interface ComponentProps {
 }
 
 const DefaultContainer = (props: ComponentProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
+  const { page } = useSitecore();
+  const sitecoreContext = page.layout.sitecore.context;
   const containerStyles = props.params && props.params.Styles ? props.params.Styles : '';
   const styles = `${props.params.GridParameters} ${containerStyles}`.trimEnd();
   const phKey = `container-${props.params.DynamicPlaceholderId}`;

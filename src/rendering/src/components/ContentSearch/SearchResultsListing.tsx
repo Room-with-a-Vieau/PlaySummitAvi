@@ -1,3 +1,4 @@
+'use client';
 import { PropsWithChildren, FC, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSlidersH } from '@fortawesome/free-solid-svg-icons';

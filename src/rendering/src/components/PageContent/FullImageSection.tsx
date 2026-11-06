@@ -1,3 +1,5 @@
+'use client';
+import type { JSX } from 'react';
 import {
   Field,
   Image,
@@ -7,7 +9,7 @@ import {
   RichText,
   Text,
   withDatasourceCheck,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import { ComponentProps } from 'lib/component-props';
 
 type FullImageSectionProps = ComponentProps & {

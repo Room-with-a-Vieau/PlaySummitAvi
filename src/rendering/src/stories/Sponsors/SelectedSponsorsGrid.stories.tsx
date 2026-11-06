@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/nextjs';
 
 import { Default as SelectedSponsorsGrid } from '../../components/Sponsors/SelectedSponsorsGrid';
 import { Sponsor } from 'src/types/sponsor';

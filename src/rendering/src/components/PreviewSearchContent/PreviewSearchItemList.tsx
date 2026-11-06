@@ -1,3 +1,5 @@
+'use client';
+import type { JSX } from 'react';
 import PreviewSearchItemCard, { PreviewSearchItemCardProps } from './PreviewSearchItemCard';
 
 export type PreviewSearchItemListProps = {

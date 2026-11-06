@@ -1,10 +1,12 @@
+'use client';
+import type { JSX } from 'react';
 import {
   Text,
   Field,
   Image,
   LayoutServicePageState,
-  useSitecoreContext,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+  useSitecore,
+} from '@sitecore-content-sdk/nextjs';
 import { ComponentProps } from 'lib/component-props';
 import { GraphQLSpeaker } from 'src/types/speaker';
 import Link from 'next/link';
@@ -36,7 +38,8 @@ const getSpeakerNumberToShow = function (props: FeaturedSpeakersProps) {
 };
 
 const FeaturedSpeakers = (props: FeaturedSpeakersProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
+  const { page } = useSitecore();
+  const sitecoreContext = page.layout.sitecore.context;
 
   const isPageEditing = sitecoreContext.pageState === LayoutServicePageState.Edit;
   const hasSpeakers = !!props.fields?.data?.item;
